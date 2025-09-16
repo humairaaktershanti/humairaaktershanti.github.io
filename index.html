@@ -1,108 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      background: #6c63ff;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    section {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about, .projects, .contact {
-      margin-bottom: 3rem;
-    }
-
-    h2 {
-      color: #6c63ff;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #6c63ff;
-      display: inline-block;
-    }
-
-    .project-item {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .contact a {
-      color: #6c63ff;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #f0f0f0;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humaira Akter Shanti - Portfolio</title>
+    
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .card {
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .skill-progress {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        
+        .skill-progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background: var(--primary-color);
+        }
+        
+        .contact-section {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .certification-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <p>Web Developer | Designer | Freelancer</p>
-  </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Humaira Shanti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <section class="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm a passionate web developer who loves creating beautiful and functional websites. I enjoy turning ideas into reality using HTML, CSS, and JavaScript.</p>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <img src="https://avatars.githubusercontent.com/u/213163679?v=4" alt="Humaira Akter Shanti" class="profile-img">
+            <h1 class="display-4 fw-bold">Humaira Akter Shanti</h1>
+            <p class="lead">Business Development Professional | HR Specialist | Tech Enthusiast</p>
+            <div class="mt-4">
+                <a href="#contact" class="btn btn-light btn-lg me-2">Contact Me</a>
+                <a href="https://www.linkedin.com/in/humaira-shanta/" class="btn btn-outline-light btn-lg" target="_blank">
+                    <i class="bi bi-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section class="projects">
-    <h2>Projects</h2>
-    <div class="project-item">
-      <h3>Project One</h3>
-      <p>A responsive landing page for a fictional product using HTML, CSS, and a bit of JavaScript.</p>
-    </div>
-    <div class="project-item">
-      <h3>Project Two</h3>
-      <p>A clean and modern portfolio website showcasing projects and skills.</p>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">About Me</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <p class="lead text-center">A versatile and goal-oriented professional with a strong foundation in Business Development, Human Resources and Technology.</p>
+                    <p>I'm committed to continuous learning and excellence, with the ability to adapt quickly to diverse roles and environments. Seeking opportunities where I can leverage my multidisciplinary skills, contribute to organizational growth, and develop as a dynamic team member in a forward-thinking organization.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Personal Information</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>Date of Birth:</strong> 08th December 1999</li>
+                                <li><strong>Nationality:</strong> Bangladeshi</li>
+                                <li><strong>Marital Status:</strong> Unmarried</li>
+                                <li><strong>Languages:</strong> Bengali, English, Hindi</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Contact Information</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>Phone:</strong> 01515-299261 | 01788-602934</li>
+                                <li><strong>Email:</strong> humairaaktershanti@gmail.com</li>
+                                <li><strong>Address:</strong> 17/1 C, Kazi Reaz Uddin Road, Lalbagh, Dhaka-1211</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-    <p>LinkedIn: <a href="#" target="_blank">Your LinkedIn</a></p>
-    <p>GitHub: <a href="#" target="_blank">Your GitHub</a></p>
-  </section>
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Senior Executive (Business Development)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Capilta Business Solution | Jan 2025 – Present</h6>
+                            <ul>
+                                <li>Leading initiatives to identify and capture new business opportunities</li>
+                                <li>Building relationships with clients and partners for strategic growth</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Executive (Business Development, HR & Accounts)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Fanam Trip | Jul 2024 – Dec 2024</h6>
+                            <ul>
+                                <li>Coordinated with airlines, hotels, and tour operators to create travel packages</li>
+                                <li>Managed financial transactions, invoicing, and supported audits</li>
+                                <li>Assisted in recruitment, onboarding, attendance, and HR documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Executive (Business Development)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Sheba Technologies Ltd | Feb 2024 – Jun 2024</h6>
+                            <ul>
+                                <li>Focused on expanding business opportunities, partnerships and market growth</li>
+                                <li>Conducted market research and competitor analysis</li>
+                                <li>Created marketing strategies, business proposals, presentations, tenders, and campaigns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Intern</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Bank Asia PLC – Shyamoli Branch | Sep 2023 – Dec 2023</h6>
+                            <ul>
+                                <li>Foreign Trade: Assisted in LC preparation and trade documents</li>
+                                <li>Credit: Helped with loan documentation and credit analysis</li>
+                                <li>General Banking: Supported customer service, account opening, and remittance processing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 Your Name. All rights reserved.
-  </footer>
+    <!-- Education Section -->
+    <section id="education" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Education</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Postgraduate Diploma (PGD)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Human Resource Management (HRM)</h6>
+                            <p class="card-text">Daffodil International University - Human Resource Development Institute</p>
+                            <p class="text-muted">Status: Appeared</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Master of Business Administration (MBA)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Marketing</h6>
+                            <p class="card-text">University of Dhaka – Eden Mohila College</p>
+                            <p class="text-muted">CGPA: 3.41 out of 4.00 | Year: 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Bachelor of Business Administration (BBA)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Marketing</h6>
+                            <p class="card-text">University of Dhaka – Eden Mohila College</p>
+                            <p class="text-muted">CGPA: 3.01 out of 4.00 | Year: 2020</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Higher Secondary Certificate (HSC)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Business Studies</h6>
+                            <p class="card-text">Dhaka City College</p>
+                            <p class="text-muted">GPA: 4.75 out of 5.00 | Year: 2016</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Skills & Expertise</h2>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mb-4">Technical Skills</h4>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Microsoft Office Tools</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Web Development (HTML, CSS, Bootstrap)</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Programming (Python, JavaScript)</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Graphic Design (Photoshop, Illustrator, Canva)</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Cloud Accounting (QuickBooks, Xero)</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">Digital Marketing (SEO, Content, Social Media)</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4 class="mb-4">Certifications & Training</h4>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">GDS Training in 'Reservation and Ticketing' (SABRE)</h5>
+                        <p class="mb-0 text-muted">Sabre Travel Network (Bangladesh) Limited, 2024</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">News Presentation Course</h5>
+                        <p class="mb-0 text-muted">JobsA1.com, 2024</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">Web Application Development with Python, Level-4 (Ongoing)</h5>
+                        <p class="mb-0 text-muted">Daffodil International Professional Training</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">Cloud Accounting For Business</h5>
+                        <p class="mb-0 text-muted">Daffodil International Professional Training</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">English Foundation and IELTS Course</h5>
+                        <p class="mb-0 text-muted">10 Minute School English Learning Centre</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">Digital Marketing Training</h5>
+                        <p class="mb-0 text-muted">Dreamland IT & Software, Panthapath, Dhaka</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">Graphic Design Course</h5>
+                        <p class="mb-0 text-muted">Dreamland IT & Software, Panthapath, Dhaka</p>
+                    </div>
+                    
+                    <div class="certification-item">
+                        <h5 class="mb-1">Certified Advance Corporate Professional (CACP)</h5>
+                        <p class="mb-0 text-muted">BrainZone Training Centre, Dhaka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="contact-info mb-4">
+                        <p><i class="bi bi-envelope-fill"></i> humairaaktershanti@gmail.com</p>
+                        <p><i class="bi bi-telephone-fill"></i> 01515-299261 | 01788-602934</p>
+                        <p><i class="bi bi-geo-alt-fill"></i> 17/1 C, Kazi Reaz Uddin Road, Lalbagh, Dhaka-1211</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h4 class="mb-3">Connect With Me</h4>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/humaira-shanta/" target="_blank">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="http://github.com/humairaaktershanti/" target="_blank">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="mailto:humairaaktershanti@gmail.com">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <a href="https://drive.google.com/file/d/your-cv-link" class="btn btn-primary btn-lg">
+                            <i class="bi bi-download me-2"></i> Download My CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Humaira Akter Shanti. All Rights Reserved.</p>
+            <p>Designed with <i class="bi bi-heart-fill text-danger"></i> by Humaira</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
